@@ -8,6 +8,7 @@ const ProjectObject = require("../models/project");
 const SERVER_ERROR = "SERVER_ERROR";
 
 router.get("/", passport.authenticate("user", { session: false }), async (req, res) => {
+  console.log(req.query);
   try {
     const query = {};
     if (req.query.userId) query.user = req.query.userId;
@@ -30,6 +31,7 @@ router.get("/", passport.authenticate("user", { session: false }), async (req, r
       query.date = { ...query.date, $lte: date };
     }
 
+    console.log(query);
     const data = await ActivityObject.find({ ...query, organisation: req.user.organisation }).sort("-created_at");
     return res.status(200).send({ ok: true, data });
   } catch (error) {
