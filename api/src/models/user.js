@@ -10,7 +10,7 @@ const Schema = new mongoose.Schema({
 
   email: { type: String, trim: true },
 
-  avatar: { type: String, default: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" },
+  avatar: { type: String, trim: true, default: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" },
   banner: { type: String, default: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" },
 
   password: { type: String },
