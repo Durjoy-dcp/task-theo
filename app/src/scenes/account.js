@@ -8,7 +8,7 @@ import LoadingButton from "../components/loadingButton";
 import { setUser } from "../redux/auth/actions";
 import api from "../services/api";
 
-export default () => {
+export default function account() {
   const user = useSelector((state) => state.Auth.user);
   const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState({
@@ -74,4 +74,4 @@ export default () => {
       <Toaster />
     </div>
   );
-};
+}
