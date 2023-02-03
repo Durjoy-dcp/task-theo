@@ -7,7 +7,7 @@ import Loader from "../../components/loader";
 import LoadingButton from "../../components/loadingButton";
 import api from "../../services/api";
 
-export default () => {
+export default function view() {
   const [user, setUser] = useState(null);
   const { id } = useParams();
   useEffect(() => {
@@ -26,7 +26,7 @@ export default () => {
       </div>
     </div>
   );
-};
+}
 
 const Detail = ({ user }) => {
   const history = useHistory();

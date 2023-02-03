@@ -18,6 +18,7 @@ class api {
   get(path) {
     return new Promise(async (resolve, reject) => {
       try {
+        console.log(apiURL, path);
         const response = await fetch(`${apiURL}${path}`, {
           mode: "cors",
           method: "GET",
