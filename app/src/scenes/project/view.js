@@ -105,18 +105,21 @@ const Budget = ({ project }) => {
     (async () => {
       let d = new Date();
       let dateQuery = "";
-      if (project.paymentCycle === "ONE_TIME") {
-        d = new Date(project.created_at);
+      console.log(project);
+      if (project[0].paymentCycle === "ONE_TIME") {
+        d = new Date(project[0].created_at);
         dateQuery = "gte:";
       }
+      console.log(project);
       const date = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1));
-      const { data } = await api.get(`/activity?projectId=${encodeURIComponent(project._id)}&date=${dateQuery}${date.getTime()}`);
+      const { data } = await api.get(`/activity?projectId=${encodeURIComponent(project[0]._id)}&date=${dateQuery}${date.getTime()}`);
+      console.log(data);
       setActivities(data);
     })();
   }, []);
 
   const total = activities.reduce((acc, cur) => acc + cur.value, 0);
-  const budget_max_monthly = project.budget_max_monthly;
+  const budget_max_monthly = project[0].budget_max_monthly;
   const width = (100 * total) / budget_max_monthly || 0;
 
   if (!project.budget_max_monthly) return <div className="mt-2 text-[24px] text-[#212325] font-semibold">{total.toFixed(2)}€</div>;
@@ -138,7 +141,8 @@ const Activities = ({ project }) => {
       let date_to = new Date(date);
       date_to.setMonth(date_to.getMonth() + 1);
       date_to.setDate(0);
-      const { data } = await api.get(`/activity?dateFrom=${from.getTime()}&dateTo=${date_to.getTime()}&projectId=${encodeURIComponent(project._id)}`);
+      const { data } = await api.get(`/activity?dateFrom=${from.getTime()}&dateTo=${date_to.getTime()}&projectId=${encodeURIComponent(project[0]._id)}`);
+      console.log(data);
       const users = await api.get(`/user`);
 
       setActivities(
@@ -196,7 +200,7 @@ const Activities = ({ project }) => {
                         if (!a.detail[i]) return acc;
                         return acc + a.detail[i].value;
                       }, 0);
-                      return <Field key={i} value={v} disabled />;
+                      return <Field key={i} value={v} />;
                     })}
                   </tr>
                   {activities
