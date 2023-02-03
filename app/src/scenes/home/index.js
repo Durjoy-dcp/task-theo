@@ -19,6 +19,7 @@ const Home = () => {
         {availableUsers?.map((user) => (
           <div key={user._id} className="bg-white mb-[10px] rounded-lg shadow-sm flex gap-4 p-3">
             <img src={user.avatar} alt="userlogo" className="rounded-full w-14 h-14" />
+            {console.log(user.avatar)}
             <div>
               <h3 className="font-semibold text-lg mb-[3px]">{user.name}</h3>
               {/* <h3 className="text-[#676D7C] text-sm">{user.email}</h3> */}

@@ -24,6 +24,7 @@ export default function signin() {
         initialValues={{ username: "", password: "" }}
         onSubmit={async (values, actions) => {
           try {
+            console.log(values);
             const { user, token } = await api.post(`/user/signin`, values);
             if (token) api.setToken(token);
             if (user) dispatch(setUser(user));
@@ -72,6 +73,7 @@ export default function signin() {
                 {/* Error */}
                 <p className="text-[12px] text-[#FD3131]">{errors.password}</p>
               </div>
+
               {/* SignIn Button */}
               <div className="flex gap-3">
                 <LoadingButton

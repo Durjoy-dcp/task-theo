@@ -24,6 +24,7 @@ export default function signup() {
         initialValues={{ username: "", organisation: "", password: "" }}
         onSubmit={async (values, actions) => {
           try {
+            console.log(values);
             const { user, token } = await api.post(`/user/signup`, values);
             if (token) api.setToken(token);
             if (user) dispatch(setUser(user));
@@ -89,6 +90,20 @@ export default function signup() {
                 </div>
                 {/* Error */}
                 <p className="text-[12px] text-[#FD3131]">{errors.password}</p>
+              </div>
+              <div role="group" aria-labelledby="my-radio-group">
+                <label>
+                  <Field type="radio" name="avatar" onChange={handleChange} value="https://i.ibb.co/r5jVxKc/avatarimg1.png" />
+                  <img style={{ height: "50px", width: "50px", margin: "10px" }} src="https://i.ibb.co/r5jVxKc/avatarimg1.png" alt="" />
+                </label>
+                <label>
+                  <Field type="radio" name="avatar" onChange={handleChange} value="https://i.ibb.co/P13PWrz/avatarimg2.png" />
+                  <img style={{ height: "50px", width: "50px", margin: "10px" }} src="https://i.ibb.co/P13PWrz/avatarimg2.png" alt="" />
+                </label>
+                <label>
+                  <Field type="radio" name="avatar" onChange={handleChange} value="https://i.ibb.co/m94zbXF/avatarimg3.png" />
+                  <img style={{ height: "50px", width: "50px", margin: "10px" }} src="https://i.ibb.co/m94zbXF/avatarimg3.png" alt="" />
+                </label>
               </div>
               {/* SignIn Button */}
               <LoadingButton
