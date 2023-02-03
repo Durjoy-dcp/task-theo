@@ -114,6 +114,8 @@ const Create = () => {
                   const res = await api.post("/user", values);
                   if (!res.ok) throw res;
                   toast.success("Created!");
+                  console.log(values);
+
                   setOpen(false);
                   history.push(`/user/${res.data._id}`);
                 } catch (e) {
@@ -128,7 +130,7 @@ const Create = () => {
                     <div className="flex justify-between flex-wrap">
                       <div className="w-full md:w-[48%] mt-2">
                         <div className="text-[14px] text-[#212325] font-medium	">Name</div>
-                        <input className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="username" value={values.username} onChange={handleChange} />
+                        <input className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="name" value={values.name} onChange={handleChange} />
                       </div>
                       <div className="w-full md:w-[48%] mt-2">
                         <div className="text-[14px] text-[#212325] font-medium	">Email</div>

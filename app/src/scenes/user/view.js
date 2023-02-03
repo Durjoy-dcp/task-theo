@@ -52,6 +52,7 @@ const Detail = ({ user }) => {
         }
       }}>
       {({ values, handleChange, handleSubmit, isSubmitting }) => {
+        console.log(values);
         return (
           <React.Fragment>
             <div className="flex justify-between flex-wrap mt-4">
